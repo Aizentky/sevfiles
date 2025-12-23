@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<title>SevFiles</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="SevShop" />
+<meta property="og:description" content="We are selling old/new minecraft server files just for cheap price!" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://commons.wikimedia.org/wiki/File:Minecraft-creeper-face.jpg" />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#060814;
+  --bg2:#0f1026;
+  --accent1:#00FF3B;
+  --accent2:#008EFF;
+  --muted:#9aa4bd;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui}
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#eaf1ff;
+}
+.wave-layer{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(800px 400px at 10% 20%, rgba(109,40,217,0.09), transparent 20%),
+    radial-gradient(700px 350px at 90% 80%, rgba(236,72,153,0.07), transparent 20%);
+}
+header{text-align:center;padding:40px 20px}
+.logo{
+  font-size:44px;font-weight:800;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+main{
+  max-width:1200px;
+  margin:20px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:24px;
+}
+.card{
+  background:rgba(255,255,255,0.03);
+  border-radius:20px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+.card h2{margin:0;font-size:22px}
+.price{color:var(--accent2);font-weight:800;font-size:18px}
+.features{margin:10px 0;color:var(--muted)}
+.buy{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+}
+.payment-fixed{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.05);
+  padding:14px 18px;
+  border-radius:14px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.copy-btn{
+  padding:8px 12px;
+  border-radius:10px;
+  border:none;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wave-layer"></div>
+
+<header>
+  <div class="logo">S+</div>
+  <h1>SEVWARE SHOP</h1>
+  <div style="color:#9aa4bd">$ Website created by 777znt $</div>
+</header>
+
+<main id="ranksGrid"></main>
+
+<div class="payment-fixed">
+  <div>
+    <div style="font-size:13px;color:#9aa4bd">💳 GCash</div>
+    <div id="paymentNumber" style="font-weight:800">09275980501</div>
+    <div style="font-size:13px;color:#9aa4bd">LI***L V.</div>
+  </div>
+  <button class="copy-btn" id="copyBtn">Copy</button>
+  <a class="buy" href="https://discord.gg/mmQenC2u" target="_blank">Join Discord</a>
+</div>
+
+<script>
+const discordInvite = "https://discord.gg/mmQenC2u";
+
+const ranks = [
+  { name:"Sev Panel Premium", price:"250₱", features:["Panel Access"] },
+  { name:"VeryliumSMP", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"UnitedMN", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"GrassSMP", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"BreezeSMP", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"NexoVaraMC", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"AppleMCS S6", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"LynxSMP", price:"250₱", features:["Minecraft Server Files"] },
+  { name:"DonutSMP Folia Ultimate Replica", price:"250₱", features:["Minecraft Server Files"] }
+];
+
+const grid = document.getElementById("ranksGrid");
+
+ranks.forEach(rank=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+    <h2>${rank.name}</h2>
+    <div class="features">${rank.features[0]}</div>
+    <div class="price">${rank.price}</div>
+    <a class="buy" href="${discordInvite}" target="_blank">Buy on Discord</a>
+  `;
+  grid.appendChild(card);
+});
+
+document.getElementById("copyBtn").onclick=()=>{
+  navigator.clipboard.writeText(
+    document.getElementById("paymentNumber").innerText
+  );
+};
+</script>
+
+</body>
+</html>
